@@ -1,0 +1,22 @@
+﻿@model List<EmployeeWorkHoursModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Total Time Worked</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            var rowClass = employee.TotalTimeWorked < 100 ? "table-danger" : "";
+            <tr class="@rowClass">
+                <td>@employee.EmployeeName</td>
+                <td>@employee.TotalTimeWorked</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("GeneratePieChart", "Employee")">Generate Pie Chart</a>
